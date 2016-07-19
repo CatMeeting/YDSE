@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+     http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+
+
+    <servlet>
+        <servlet-name>helloworld</servlet-name>
+        <servlet-class>HelloWorld</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>helloworld</servlet-name>
+        <url-pattern>/helloworld</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>serch</servlet-name>
+        <servlet-class>servlet.Serch</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>serch</servlet-name>
+        <url-pattern>/serch</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+		<servlet-name>top</servlet-name>
+		<servlet-class>servlet/Top</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>top</servlet-name>
+		<url-pattern></url-pattern>
+	</servlet-mapping>
+	
+	
+    <servlet>
+		<servlet-name>top</servlet-name>
+		<servlet-class>servlet.Top</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>top</servlet-name>
+		<url-pattern>/top</url-pattern>
+	</servlet-mapping>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/page/errorOfAdmin.jsp</location>
+	</error-page>
+	<error-page>
+    	<exception-type>exception.MyException</exception-type>
+    	<location>/page/errorOfAdmin.jsp</location>
+	</error-page>
+	
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/page/error.jsp</location>
+	</error-page>
+	<error-page>
+    	<exception-type>java.lang.Throwable</exception-type>
+    	<location>/page/error.jsp</location>
+	</error-page>
+	
+
+</web-app>
