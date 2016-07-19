@@ -24,7 +24,7 @@ public class DeckDAO {
 			DeckVO deckVO = new DeckVO(rs.getInt("deck_id"), rs.getString("deck_name"));
 			deck.add(deckVO);
 		}
-		//DBから切断
+		//DBから切断します
 		dbh.close();
 		//検索結果を返す
 		throw new Exception();
