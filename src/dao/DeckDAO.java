@@ -27,7 +27,7 @@ public class DeckDAO {
 		//DBから切断します
 		dbh.close();
 		//検索結果を返す
-		throw new Exception();
-		//return deck;
+		//throw new Exception();
+		return deck;
 	}
 }
