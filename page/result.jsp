@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Shift-JIS"
     pageEncoding="Shift-JIS" import="java.util.*, vo.DeckVO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<%!
-ArrayList<DeckVO> deckList = new ArrayList<DeckVO>();
-%>
-
 
 <html>
 <head>
@@ -16,22 +12,17 @@ ArrayList<DeckVO> deckList = new ArrayList<DeckVO>();
 </head>
 <body>
 
-<%
-
-	deckList = (ArrayList<DeckVO>)request.getAttribute("deck");
-	out.print("ŒŸõŒ‹‰Ê‚Í"+ deckList.size() +"Œ‚Å‚·</br>");
-
-%>
+ŒŸõŒ‹‰Ê‚Í
+<c:out value="${deck.size()}" />
+Œ‚Å‚·
 
 <table border=1>
 
-<%
-	for(int i=0; i<deckList.size(); i++){
-
-		DeckVO deck = deckList.get(i);
-		out.print("<tr><td>"+deck.getDeckName()+"</td></tr>");
-	}
-%>
+    <c:forEach var="deckList" items="${deck}">
+    	<tr><td>
+    		<c:out value="${deckList.deckName }"/>
+    	</td></tr>
+    </c:forEach>
 
 </table>
 
