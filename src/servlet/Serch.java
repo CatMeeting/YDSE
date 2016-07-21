@@ -19,10 +19,11 @@ public class Serch extends HttpServlet{
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
 		//リクエストからデッキ名を受け取る
-		req.setCharacterEncoding("Shift-JIS");
+		//req.setCharacterEncoding("Shift-JIS");
+		req.setCharacterEncoding("UTF-8");
 		String deckName = req.getParameter("deckName");
+
 		LogTest log = new LogTest();
 		log.logText(deckName);
 

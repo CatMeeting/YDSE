@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=SHift-JIS"
-    pageEncoding="SHift-JIS" import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=SHift-JIS">
-<title>ƒgƒbƒvƒy[ƒW</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸</title>
 
 
 <script type="text/javascript">
 function check(){
 	if (document.getElementById("deckName").value == "") {
-    	//‘S‚Ä–¢“ü—Í‚¾‚Á‚½‚çAƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦‚·‚é
-    	document.getElementById("errorMessage").innerHTML = "‰½‚©“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
+    	//å…¨ã¦æœªå…¥åŠ›ã ã£ãŸã‚‰ã€ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹
+    	document.getElementById("errorMessage").innerHTML = "ä½•ã‹å…¥åŠ›ã—ã¦ãã ã•ã„";
     	return false;
     }
 }
@@ -30,13 +30,13 @@ function check(){
 
 <table border="0">
   <tr>
-    <th align="right">ƒfƒbƒL–¼F</th>
+    <th align="right">ãƒ‡ãƒƒã‚­åï¼š</th>
     <td><input type="text" name="deckName" id="deckName" size="40" maxlength="20"/></td>
   </tr>
   <tr>
     <td align="center" colspan="2">
-      <input type="reset" value="ƒNƒŠƒA" />
-      <input type="submit" value="ŒŸõ" />
+      <input type="reset" value="ã‚¯ãƒªã‚¢" />
+      <input type="submit" value="æ¤œç´¢" />
     </td>
   </tr>
 </table>
