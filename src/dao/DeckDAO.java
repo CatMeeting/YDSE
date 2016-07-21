@@ -10,12 +10,23 @@ public class DeckDAO {
 
 
 	public ArrayList<DeckVO> selectDeck(String deckName) throws Exception{
+		//returnするための変数を用意
 		ArrayList<DeckVO> deck = new ArrayList<DeckVO>();
+
+		//エスケープ文字の設定
+		String[] strArray = deckName.split("");
+		deckName = "";
+		for(int i=0; i<strArray.length; i++){
+			if(strArray[i].equals("\\") || strArray[i].equals("_") || strArray[i].equals("%")){
+				deckName += "\\";
+			}
+			deckName += strArray[i];
+		}
 
 		//DBに接続するためのインスタンス生成
 		DBHelper dbh = new DBHelper();
 		//SQL文の実行
-		PreparedStatement pstmt = dbh.open().prepareStatement("SELECT * FROM deck WHERE deck_name LIKE ?");
+		PreparedStatement pstmt = dbh.open().prepareStatement("SELECT * FROM deck WHERE deck_name LIKE ? ESCAPE '\'");
 		pstmt.setString(1, "%"+deckName+"%");
 		ResultSet rs = pstmt.executeQuery();
 
@@ -27,7 +38,6 @@ public class DeckDAO {
 		//DBから切断します
 		dbh.close();
 		//検索結果を返す
-		//throw new Exception();
 		return deck;
 	}
 }
