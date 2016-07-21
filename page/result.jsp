@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<c:out value="${deckName}" />
+で検索しました。</br>
 検索結果は
 <c:out value="${deck.size()}" />
 件です
@@ -27,7 +29,7 @@
 </table>
 
 
-<a href ="top">トップへ</a>
+<a href ="top">トップへ戻る</a>
 
 </body>
 </html>

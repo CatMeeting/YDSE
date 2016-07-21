@@ -24,6 +24,7 @@ public class Serch extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		String deckName = req.getParameter("deckName");
 
+		//検索条件のログ出力
 		LogTest log = new LogTest();
 		log.logText(deckName);
 
@@ -37,8 +38,13 @@ public class Serch extends HttpServlet{
 		} catch (Exception e) {
 			throw new exception.MyException(e, "DB周りでのエラーですね＾＾");
 		}
+
 		//リクエストに検索結果をセットする
 		req.setAttribute("deck", dVO);
+		//リクエストに検索条件も保持させる
+		HttpSession session = req.getSession();
+		session.setAttribute("deckName", deckName);
+		//req.setAttribute("deckName", deckName);
 
 		// forwardメソッドで検索結果を表示するJSPに遷移
 		RequestDispatcher rd = req.getRequestDispatcher("/page/result.jsp");
