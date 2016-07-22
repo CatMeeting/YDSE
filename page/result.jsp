@@ -6,16 +6,15 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift-JIS">
 <title>検索結果</title>
-
 <link rel="stylesheet" href="css/table.css">
+
+<jsp:include page="header.jsp" flush="true" />
+
 
 </head>
 <body>
 
-<div id = "head">
-<h1><a href ="top">YDSE</a></h1>
 <p>
 <c:out value="${deckName}" />
 で検索しました。</br>
