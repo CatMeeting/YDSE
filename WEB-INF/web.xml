@@ -3,19 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
      http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-    version="2.4">
+    version="3.0">
 
 
+	<servlet>
+		<servlet-name>helloworld</servlet-name>
+		<servlet-class>HelloWorld</servlet-class>
+	</servlet>
 
-    <servlet>
-        <servlet-name>helloworld</servlet-name>
-        <servlet-class>HelloWorld</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>helloworld</servlet-name>
-        <url-pattern>/helloworld</url-pattern>
-    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>helloworld</servlet-name>
+		<url-pattern>/helloworld</url-pattern>
+	 </servlet-mapping>
 
 
     <servlet>
@@ -31,25 +30,50 @@
     
     <servlet>
 		<servlet-name>top</servlet-name>
-		<servlet-class>servlet/Top</servlet-class>
+		<servlet-class>servlet.Top</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>top</servlet-name>
 		<url-pattern></url-pattern>
 	</servlet-mapping>
 	
 	
-    <servlet>
+	<servlet>
 		<servlet-name>top</servlet-name>
 		<servlet-class>servlet.Top</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>top</servlet-name>
 		<url-pattern>/top</url-pattern>
 	</servlet-mapping>
 	
+	
+    <servlet>
+        <servlet-name>registerPage</servlet-name>
+        <servlet-class>servlet.RegisterPage</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>registerPage</servlet-name>
+        <url-pattern>/registerPage</url-pattern>
+    </servlet-mapping>
+	
+	
+    <servlet>
+        <servlet-name>insert</servlet-name>
+        <servlet-class>servlet.Insert</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>insert</servlet-name>
+        <url-pattern>/insert</url-pattern>
+    </servlet-mapping>
+	
+	
 	<error-page>
-		<error-code>404</error-code>
+		<error-code>500</error-code>
 		<location>/page/errorOfAdmin.jsp</location>
 	</error-page>
 	<error-page>
@@ -67,5 +91,11 @@
     	<location>/page/error.jsp</location>
 	</error-page>
 	
+	
+	<context-param>
+    	<param-name>log4jConfiguration</param-name>
+    	<param-value>/classes/log4j2.xml</param-value>
+	</context-param>
+
 
 </web-app>

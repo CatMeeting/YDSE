@@ -29,6 +29,12 @@ function clearFormAll(f) {
 </head>
 <body>
 
+
+<a href="registerPage"><h2>・登録ページへ</h2></a>
+
+
+<h2>検索する条件を入力してください。</h2>
+
 <div style="color:red;" id="errorMessage">
 </div>
 <form method="POST" action="/YDSE/serch" onSubmit="return check()">

@@ -17,7 +17,6 @@ public class DBHelper {
 	public Connection open() throws Exception{
 
     	//DBに接続する
-		System.out.println(driver);
 		Class.forName(driver);		//ClassNotFoundExceptionの可能性あり
         connection = DriverManager.getConnection(url, user, password);	//SQLExceptionの可能性あり
         return connection;

@@ -9,7 +9,9 @@ public class Top extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		session.invalidate();
+		if(session != null){
+			session.invalidate();
+		}
 		// forwardメソッドでJSPに遷移
 		RequestDispatcher rd = req.getRequestDispatcher("/page/main.jsp");
 		rd.forward(req, resp);

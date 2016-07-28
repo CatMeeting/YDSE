@@ -22,3 +22,4 @@
 
 	<div id = "head">
 	<h1><a href ="top">YDSE</a></h1>
+	</div>

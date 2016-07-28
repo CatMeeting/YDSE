@@ -1,7 +1,14 @@
 DB周りでのエラーですね＾＾
-java.lang.Exception
-	at dao.DeckDAO.selectDeck(DeckDAO.java:29)
-	at servlet.Serch.doPost(Serch.java:35)
+org.postgresql.util.PSQLException: ERROR: column "deckname" of relation "deck" does not exist
+  ポジション: 19
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2284)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2003)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:200)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:424)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:161)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:133)
+	at dao.DeckDAO.insertDeck(DeckDAO.java:62)
+	at servlet.Insert.doPost(Insert.java:37)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230)

@@ -4,5 +4,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/J/lib/servlet.jar"/>
 	<classpathentry kind="lib" path="C:/J/lib/postgresql-9.4.1208.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/WebContent/WEB-INF/lib/apache-log4j-2.6.2-bin/log4j-1.2-api-2.6.2.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/WebContent/WEB-INF/lib/apache-log4j-2.6.2-bin/log4j-api-2.6.2.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/WebContent/WEB-INF/lib/apache-log4j-2.6.2-bin/log4j-core-2.6.2.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
