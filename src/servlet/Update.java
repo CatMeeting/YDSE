@@ -10,7 +10,7 @@ import org.apache.log4j.*;
 import dao.*;
 import vo.*;
 
-public class Serch extends HttpServlet{
+public class Update extends HttpServlet{
 
 	private Logger logger = (Logger) Logger.getInstance(this.getClass().getName());
 
@@ -23,34 +23,38 @@ public class Serch extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//リクエストからデッキ名を受け取る
-		//req.setCharacterEncoding("Shift-JIS");
 		req.setCharacterEncoding("UTF-8");
-		String deckName = req.getParameter("deckName");
-
-		//検索条件のログ出力
-		logger.debug(deckName);
+		int listNum = Integer.parseInt(req.getParameter("listNum"));
+		String button = req.getParameter("button");
+		logger.debug(button+":"+listNum);
 
 		//DAOのインスタンスを生成
 		DeckDAO dDAO = new DeckDAO();
+		//変更後のデータを格納する
+		HttpSession session = req.getSession();
+		String deckName = (String) session.getAttribute("deckName");
+		ArrayList<DeckVO> deckList = new ArrayList<DeckVO>();
 
-		//デッキ名を引数に検索結果を受け取る
-		ArrayList<DeckVO> dVO = new ArrayList<DeckVO>();
 		try {
-			dVO = dDAO.selectDeck(deckName);
+			if(button.equals("編集")){
+				String deckNameUp = req.getParameter("deckNameUp");
+				DeckVO newdVO = new DeckVO(listNum, deckNameUp);
+				dDAO.updateDeck(newdVO);
+			}else if(button.equals("削除")){
+				dDAO.deleteDeck(listNum);
+			}
+			deckList = dDAO.selectDeck(deckName);
 		} catch (Exception e) {
 			logger.error(e);
 			throw new exception.MyException(e, "DB周りでのエラーですね＾＾");
 		}
 
 		//リクエストに検索結果をセットする
-		req.setAttribute("deck", dVO);
-		//リクエストに検索条件も保持させる
-		HttpSession session = req.getSession();
-		session.setAttribute("deckName", deckName);
-		//req.setAttribute("deckName", deckName);
+		req.setAttribute("deckList", deckList);
+		req.setAttribute("button", button);
 
 		// forwardメソッドで検索結果を表示するJSPに遷移
-		RequestDispatcher rd = req.getRequestDispatcher("/page/result.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/page/select.jsp");
 		rd.forward(req, resp);
 	}
 

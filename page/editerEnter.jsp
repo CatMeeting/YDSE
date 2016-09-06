@@ -8,11 +8,11 @@
 <head>
 
 <jsp:include page="header.jsp" flush="true" />
-<title>トップページ</title>
+<title>新規デッキ登録ページ</title>
 
 <script type="text/javascript">
 function check(){
-	if (document.getElementById("deckName").value == "") {
+	if (document.getElementById("deckNameUp").value == "") {
     	//全て未入力だったら、エラーメッセージを表示する
     	document.getElementById("errorMessage").innerHTML = "何か入力してください";
     	return false;
@@ -29,30 +29,29 @@ function clearFormAll(f) {
 </head>
 <body>
 
-<h2>
-<a href="registerPage">・登録ページへ</a>
-<a href="edit">・編集ページへ</a>
-</h2>
+<c:out value="${deckNameUp}" />を変更します。</br>
 
-<h2>検索する条件を入力してください。</h2>
+<h2>変更後の情報を入力してください</h2>
 
 <div style="color:red;" id="errorMessage">
 </div>
-<form method="POST" action="/YDSE/serch" onSubmit="return check()">
-
+<form method="POST" action="/YDSE/update" onSubmit="return check()">
+	<input type = "hidden" value="編集" name ="button"/>
+	<input type = "hidden" value="${listNum}" name="listNum">
 <table border="0">
   <tr>
     <th align="right">デッキ名：</th>
-    <td><input type="text" name="deckName" id="deckName" size="40" maxlength="20" value="${deckName}" /></td>
+    <td><input type="text" name="deckNameUp" id="deckNameUp" size="40" maxlength="20" value="${deckNameUp}" /></td>
   </tr>
   <tr>
     <td align="center" colspan="2">
       <input type="button" value="クリア" onClick="clearFormAll(this.form)" />
-      <input type="submit" value="検索" />
+      <input type="submit" value="登録" />
     </td>
   </tr>
 </table>
 </form>
+
 
 </body>
 </html>

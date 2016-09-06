@@ -22,7 +22,6 @@
 <c:out value="${deck.size()}" />
 åèÇ≈Ç∑
 </p>
-</div>
 
 <div id = "result">
 
@@ -36,7 +35,7 @@
 </div>
 
 <div id = "foot">
-</br>
+
 
 <form method="POST" action="/YDSE/top">
 	 <input type="submit" value="ñﬂÇÈ" />

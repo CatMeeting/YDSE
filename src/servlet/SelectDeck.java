@@ -1,6 +1,6 @@
 package servlet;
-
 import java.io.*;
+import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -8,18 +8,15 @@ import javax.servlet.http.*;
 import org.apache.log4j.*;
 
 import dao.*;
+import vo.*;
 
-public class Insert extends HttpServlet{
+public class SelectDeck extends HttpServlet{
 
-	private Logger logger = (Logger) Logger.getInstance( this.getClass().getName() );
+	private Logger logger = (Logger) Logger.getInstance(this.getClass().getName());
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		if(session != null){
-			session.invalidate();
-		}
 		// forwardメソッドでJSPに遷移
-		RequestDispatcher rd = req.getRequestDispatcher("/page/registerResult.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/page/result.jsp");
 		rd.forward(req, resp);
 	}
 
@@ -27,7 +24,7 @@ public class Insert extends HttpServlet{
 
 		//リクエストからデッキ名を受け取る
 		req.setCharacterEncoding("UTF-8");
-		String deckName = req.getParameter("deckNameIn");
+		String deckName = req.getParameter("deckName");
 
 		//検索条件のログ出力
 		logger.debug(deckName);
@@ -36,22 +33,22 @@ public class Insert extends HttpServlet{
 		DeckDAO dDAO = new DeckDAO();
 
 		//デッキ名を引数に検索結果を受け取る
-		int resultNum = 0;
+		ArrayList<DeckVO> dVO = new ArrayList<DeckVO>();
 		try {
-			resultNum = dDAO.insertDeck(deckName);
+			dVO = dDAO.selectDeck(deckName);
 		} catch (Exception e) {
-			//デバックログの出力
 			logger.error(e);
+			throw new exception.MyException(e, "DB周りでのエラーですね＾＾");
 		}
 
 		//リクエストに検索結果をセットする
-		req.setAttribute("insertResult", resultNum);
-		//リクエストに検索条件も保持させる
+		req.setAttribute("deckList", dVO);
+		//セッションに検索条件も保持させる
 		HttpSession session = req.getSession();
-		session.setAttribute("deckNameIn", deckName);
+		session.setAttribute("deckName", deckName);
 
-		// forwardメソッドでJSPに遷移
-		RequestDispatcher rd = req.getRequestDispatcher("/page/registerResult.jsp");
+		// forwardメソッドで検索結果を表示するJSPに遷移
+		RequestDispatcher rd = req.getRequestDispatcher("/page/select.jsp");
 		rd.forward(req, resp);
 	}
 
