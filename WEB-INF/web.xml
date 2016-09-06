@@ -72,6 +72,50 @@
     </servlet-mapping>
 	
 	
+    <servlet>
+        <servlet-name>edit</servlet-name>
+        <servlet-class>servlet.Edit</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+	
+	
+    <servlet>
+        <servlet-name>selectDeck</servlet-name>
+        <servlet-class>servlet.SelectDeck</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>selectDeck</servlet-name>
+        <url-pattern>/selectDeck</url-pattern>
+    </servlet-mapping>
+	
+	
+    <servlet>
+        <servlet-name>editEnter</servlet-name>
+        <servlet-class>servlet.EditEnter</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>editEnter</servlet-name>
+        <url-pattern>/editEnter</url-pattern>
+    </servlet-mapping>
+	
+	
+    <servlet>
+        <servlet-name>update</servlet-name>
+        <servlet-class>servlet.Update</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>update</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+	
+	
 	<error-page>
 		<error-code>500</error-code>
 		<location>/page/errorOfAdmin.jsp</location>
@@ -92,6 +136,14 @@
 	</error-page>
 	
 	
+	 <context-param>
+        <param-name>isLog4jContextSelectorNamed</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>log4jContextName</param-name>
+        <param-value>appWithJndiSelector</param-value>
+    </context-param>
 	<context-param>
     	<param-name>log4jConfiguration</param-name>
     	<param-value>/classes/log4j2.xml</param-value>

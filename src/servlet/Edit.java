@@ -1,0 +1,26 @@
+package servlet;
+import java.io.*;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class Edit extends HttpServlet{
+
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		if(session != null){
+			session.invalidate();
+		}
+		// forwardメソッドでJSPに遷移
+		RequestDispatcher rd = req.getRequestDispatcher("/page/editer.jsp");
+		rd.forward(req, resp);
+	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// forwardメソッドでJSPに遷移
+		RequestDispatcher rd = req.getRequestDispatcher("/page/editer.jsp");
+		rd.forward(req, resp);
+	}
+
+}

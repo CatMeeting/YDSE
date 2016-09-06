@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>登録結果</title>
+<title>編集結果</title>
 <link rel="stylesheet" href="css/table.css">
 
 <jsp:include page="header.jsp" flush="true" />
@@ -17,7 +17,8 @@
 
 <p>
 <c:out value="${deckNameIn}" />
-でInsertを実行しました</br>
+でUpdateを実行しました</br>
+<c:out value="${insertResult}" />
 </p>
 </div>
 
@@ -26,18 +27,18 @@
 <c:if test="${insertResult == '1'}" var="flg" />
 
 <c:if test="${flg}" >
-デッキを登録しました
+デッキを編集に成功しました
 </c:if>
 
 <c:if test="${!flg}" >
-デッキの登録に失敗しました
+デッキの編集に失敗しました
 </c:if>
 
 </div>
 
 <div id = "foot">
 
-<form method="GET" action="/YDSE/registerPage">
+<form method="GET" action="/YDSE/edit">
 	 <input type="submit" value="確認" />
 </form>
 

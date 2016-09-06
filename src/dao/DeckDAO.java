@@ -75,5 +75,40 @@ public class DeckDAO {
 		return i;
 	}
 
+	public int updateDeck(DeckVO deck) throws Exception{
+		//デバックログの出力
+		logger.debug("UPDATE:"+deck.getDeckID()+":"+deck.getDeckName());
+
+		//DBに接続するためのインスタンス生成
+		DBHelper dbh = new DBHelper();
+		//SQL文の実行
+		PreparedStatement pstmt = dbh.open().prepareStatement("UPDATE deck SET deck_name = ? WHERE deck_ID = ?");
+		pstmt.setString(1, deck.getDeckName());
+		pstmt.setInt(2, deck.getDeckID());
+		int i = pstmt.executeUpdate();
+
+		//DBから切断します
+		dbh.close();
+		//検索結果を返す
+		return i;
+	}
+
+	public int deleteDeck(int deckID) throws Exception{
+		//デバックログの出力
+		logger.debug("DELETE:"+deckID);
+
+		//DBに接続するためのインスタンス生成
+		DBHelper dbh = new DBHelper();
+		//SQL文の実行
+		PreparedStatement pstmt = dbh.open().prepareStatement("DELETE FROM deck WHERE deck_ID = ?");
+		pstmt.setInt(1, deckID);
+		int i = pstmt.executeUpdate();
+
+		//DBから切断します
+		dbh.close();
+		//検索結果を返す
+		return i;
+	}
+
 
 }

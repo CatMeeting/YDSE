@@ -3,13 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
 <html>
 <head>
 
 <jsp:include page="header.jsp" flush="true" />
-<title>トップページ</title>
 
+<title>編集ページ</title>
 <script type="text/javascript">
 function check(){
 	if (document.getElementById("deckName").value == "") {
@@ -30,15 +29,15 @@ function clearFormAll(f) {
 <body>
 
 <h2>
+<a href="top">・トップページへ</a>
 <a href="registerPage">・登録ページへ</a>
-<a href="edit">・編集ページへ</a>
 </h2>
 
-<h2>検索する条件を入力してください。</h2>
 
-<div style="color:red;" id="errorMessage">
-</div>
-<form method="POST" action="/YDSE/serch" onSubmit="return check()">
+<h2>編集するデッキの条件を入力してください。</h2>
+
+<div style="color:red;" id="errorMessage"></div>
+<form method="POST" action="/YDSE/selectDeck" onSubmit="return check()">
 
 <table border="0">
   <tr>

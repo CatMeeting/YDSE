@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 function check(){
-	if (document.getElementById("deckName").value == "") {
+	if (document.getElementById("deckNameIn").value == "") {
     	//全て未入力だったら、エラーメッセージを表示する
     	document.getElementById("errorMessage").innerHTML = "何か入力してください";
     	return false;
@@ -29,6 +29,11 @@ function clearFormAll(f) {
 </head>
 <body>
 
+<h2>
+<a href="top">・トップページへ</a>
+<a href="edit">・編集ページへ</a>
+</h2>
+
 <h2>追加したい情報を入力してください</h2>
 
 <div style="color:red;" id="errorMessage">
@@ -38,7 +43,7 @@ function clearFormAll(f) {
 <table border="0">
   <tr>
     <th align="right">デッキ名：</th>
-    <td><input type="text" name="deckName" id="deckName" size="40" maxlength="20" value="${deckNameIn}" /></td>
+    <td><input type="text" name="deckNameIn" id="deckNameIN" size="40" maxlength="20" value="${deckNameIn}" /></td>
   </tr>
   <tr>
     <td align="center" colspan="2">
@@ -48,7 +53,6 @@ function clearFormAll(f) {
   </tr>
 </table>
 </form>
-
 
 </body>
 </html>
